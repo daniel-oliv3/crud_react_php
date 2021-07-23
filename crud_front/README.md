@@ -7,3 +7,9 @@ Acessar o diretório do projeto
 
 Rodar o projeto React
 ### npm start
+
+Gerenciar as rotas
+### npm install react-router-dom
+
+Transforma o CSS em componentes
+### npm install --save styled-components

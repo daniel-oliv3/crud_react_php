@@ -1,48 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
+import { Home } from './pages/Home';
 
 function App() {
-  
-  const [data, setData] = useState([]);
-  
-  const getProdutos = async () => {
-    fetch("http://localhost/crud_back/index.php")
-    .then((response) => response.json())
-    .then((responseJson) => (
-      //console.log(responseJson),
-      setData(responseJson.records)
-    ));
-  }
-  
-  useEffect(() => {
-    getProdutos();
-  },[])
-  
-  
-  
   return (
     <div>
-      <h1>Listar</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.values(data).map(produto => (
-            <tr key={produto.id}>  
-              <td>{produto.id}</td>
-              <td>{produto.titulo}</td>
-              <td>{produto.descricao}</td>
-              <td>Visualizar Editor Apagar</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+     <Router>
+       <Switch>
+         <Route path="/" component={Home} />
+       </Switch>
+     </Router>
     </div>
   );
 }
