@@ -1,3 +1,9 @@
+COMO RODAR O PROJETO BAIXADO
+Instalar todas as dependencias indicada pelo packed.json
+### npm install
+
+
+
 SEQUENCIA PARA CRIAR O PROJETO
 criar o projeto React - 
 ### npx create-react-app my-app

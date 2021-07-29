@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "banco_dados_listar";
+$dbname = "banco_dados_crud";
 $port = 3306;
 
 //Conexao com a porta
