@@ -8,6 +8,7 @@ import {
   ButtonSuccess,
   Table,
   Titulo,
+  ButtonPrimary
 } from "./styles";
 
 export const Home = () => {
@@ -35,7 +36,7 @@ export const Home = () => {
             <ButtonSuccess>Cadastrar</ButtonSuccess>
           </Link>
         </BotaoAcao>
-      </ConteudoTitulo>  
+      </ConteudoTitulo>
       <Table>
         <thead>
           <tr>
@@ -51,7 +52,12 @@ export const Home = () => {
               <td>{produto.id}</td>
               <td>{produto.titulo}</td>
               <td>{produto.descricao}</td>
-              <td>Visualizar Editor Apagar</td>
+              <td>
+                <Link to={"/visualizar/" + produto.id}>
+                  <ButtonPrimary>Visualizar</ButtonPrimary>
+                </Link>
+                Editor Apagar
+              </td>
             </tr>
           ))}
         </tbody>
