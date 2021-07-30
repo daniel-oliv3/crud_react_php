@@ -3,6 +3,7 @@
 //Cabeçalhos obrigatorios
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: *");
 
 //Incluir a conexão
 include_once 'conexao.php';
@@ -33,7 +34,7 @@ if(($result_produto ) AND ($result_produto->rowCount() != 0)){
 }else{
     $response = [
         "erro"=> true,
-        "messagem" => "Produto não encontrado!"
+        "mensagem" => "Produto não encontrado!"
     ];
 }
 

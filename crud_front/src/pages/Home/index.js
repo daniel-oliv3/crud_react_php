@@ -8,7 +8,8 @@ import {
   ButtonSuccess,
   Table,
   Titulo,
-  ButtonPrimary
+  ButtonPrimary,
+  ButtonWarning
 } from "./styles";
 
 export const Home = () => {
@@ -55,8 +56,11 @@ export const Home = () => {
               <td>
                 <Link to={"/visualizar/" + produto.id}>
                   <ButtonPrimary>Visualizar</ButtonPrimary>
-                </Link>
-                Editor Apagar
+                </Link>{" "}
+                <Link to={"/editar/" + produto.id}>
+                  <ButtonWarning>Editar</ButtonWarning>
+                </Link>{" "}
+                 Apagar
               </td>
             </tr>
           ))}

@@ -46,20 +46,20 @@ export const Cadastrar = () => {
         //console.log(responseJson)
         if (responseJson.erro) {
           setStatus({
-            type: "erro",
+            type: 'erro',
             mensagem: responseJson.mensagem,
           });
         } else {
           setStatus({
-            type: "success",
+            type: 'success',
             mensagem: responseJson.mensagem,
           });
         }
       })
       .catch(() => {
         setStatus({
-          type: "erro",
-          mensagem: "Produto não cadastrado com sucesso, tente mais tarde!",
+          type: 'erro',
+          mensagem: 'Produto não cadastrado com sucesso, tente mais tarde!',
         });
       });
   };
@@ -76,16 +76,8 @@ export const Cadastrar = () => {
           </BotaoAcao>
         </ConteudoTitulo>
 
-        {status.type === "erro" ? (
-          <AlertDanger>{status.mensagem}</AlertDanger>
-        ) : (
-          ""
-        )}
-        {status.type === "success" ? (
-          <AlertSuccess>{status.mensagem}</AlertSuccess>
-        ) : (
-          ""
-        )}
+        {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+        {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
 
         <Form onSubmit={cadProduto}>
           <Label>Título: </Label>
@@ -95,9 +87,7 @@ export const Cadastrar = () => {
             placeholder="Título do produto"
             onChange={valorInput}
           />
-          <br />
-          <br />
-
+   
           <Label>Descrição: </Label>
           <Input
             type="text"
@@ -105,9 +95,7 @@ export const Cadastrar = () => {
             placeholder="Descrição do produto"
             onChange={valorInput}
           />
-          <br />
-          <br />
-
+          
           <ButtonSuccess type="submit">Cadastrar</ButtonSuccess>
         </Form>
       </ConteudoForm>

@@ -26,12 +26,12 @@ if($dados){
     if($cad_produto->rowCount()){
         $response = [
             "erro" => false,
-            "messagem" => "Produto cadastrado com sucesso!"
+            "mensagem" => "Produto cadastrado com sucesso!"
         ];
     }else{
         $response = [
             "erro" => true,
-            "messagem" => "Produto não foi cadastrado!"
+            "mensagem" => "Produto não foi cadastrado!"
         ];
     }
 
@@ -39,7 +39,7 @@ if($dados){
 }else{
     $response = [
         "erro" => true,
-        "messagem" => "Produto não foi cadastrado!"
+        "mensagem" => "Produto não foi cadastrado!"
     ];
 }
 
