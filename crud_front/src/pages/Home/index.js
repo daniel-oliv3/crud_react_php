@@ -9,11 +9,19 @@ import {
   Table,
   Titulo,
   ButtonPrimary,
-  ButtonWarning
+  ButtonWarning,
+  ButtonDanger,
+  AlertSuccess,
+  AlertDanger
 } from "./styles";
 
 export const Home = () => {
   const [data, setData] = useState([]);
+
+  const [status, setStatus] = useState({
+    type: '',
+    mensagem: ''
+  })
 
   const getProdutos = async () => {
     fetch("http://localhost/crud_back/index.php")
@@ -22,6 +30,31 @@ export const Home = () => {
         //console.log(responseJson),
         setData(responseJson.records)
       );
+  };
+
+  const apagarProduto = async (idProduto) =>{
+    //console.log(idProduto);
+    await fetch("http://localhost/crud_back/apagar.php?id=" + idProduto)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      if(responseJson.erro){
+        setStatus({
+          type: 'erro',
+          mensagem: responseJson.mensagem
+        });
+      }else{
+        setStatus({
+          type: 'success',
+          mensagem: responseJson.mensagem
+        });
+        getProdutos();
+      }
+    }).catch(() => {
+      setStatus({
+        type: 'erro',
+        mensagem: "Erro: Produto não foi apagado, tente mais tarde!"
+      });
+    });
   };
 
   useEffect(() => {
@@ -38,6 +71,10 @@ export const Home = () => {
           </Link>
         </BotaoAcao>
       </ConteudoTitulo>
+
+      {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+      {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+
       <Table>
         <thead>
           <tr>
@@ -60,7 +97,7 @@ export const Home = () => {
                 <Link to={"/editar/" + produto.id}>
                   <ButtonWarning>Editar</ButtonWarning>
                 </Link>{" "}
-                 Apagar
+                <ButtonDanger onClick={() => apagarProduto(produto.id)}>Apagar</ButtonDanger>
               </td>
             </tr>
           ))}
